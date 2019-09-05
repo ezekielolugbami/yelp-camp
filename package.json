@@ -1,0 +1,32 @@
+{
+  "name": "yelp-camp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezekielolugbami/yelp-camp.git"
+  },
+  "keywords": [
+    "full-stack",
+    "web-development",
+    "node",
+    "javascript",
+    "mongodb",
+    "express"
+  ],
+  "author": "Ezekiel Olugbami",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ezekielolugbami/yelp-camp/issues"
+  },
+  "homepage": "https://github.com/ezekielolugbami/yelp-camp#readme",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}
