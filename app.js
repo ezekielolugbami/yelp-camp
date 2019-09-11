@@ -1,20 +1,33 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
+var express     = require("express"),
+    app     = express(),
+    bodyParser  = require("body-parser"),
+    mongoose    = require("mongoose");
 
-var campgrounds = [
-    {name: "Salmon Creek", image: "https://cdn.pixabay.com/photo/2014/11/27/18/36/tent-548022__340.jpg"},
-    {name: "Granite Hill", image: "https://cdn.pixabay.com/photo/2016/01/19/16/48/teepee-1149402__340.jpg"},
-    {name: "Solid Base", image: "https://cdn.pixabay.com/photo/2016/11/21/15/14/camping-1845906__340.jpg"},
-    {name: "Salmon Creek", image: "https://cdn.pixabay.com/photo/2014/11/27/18/36/tent-548022__340.jpg"},
-    {name: "Granite Hill", image: "https://cdn.pixabay.com/photo/2016/01/19/16/48/teepee-1149402__340.jpg"},
-    {name: "Solid Base", image: "https://cdn.pixabay.com/photo/2016/11/21/15/14/camping-1845906__340.jpg"},
-    {name: "Salmon Creek", image: "https://cdn.pixabay.com/photo/2014/11/27/18/36/tent-548022__340.jpg"},
-    {name: "Granite Hill", image: "https://cdn.pixabay.com/photo/2016/01/19/16/48/teepee-1149402__340.jpg"},
-    {name: "Solid Base", image: "https://cdn.pixabay.com/photo/2016/11/21/15/14/camping-1845906__340.jpg"}
-];
+mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+
+
+//schema setup
+var campgroundSchema = new mongoose.Schema({
+    name: String,
+    image: String
+});
+
+var Campground = mongoose.model("Campground", campgroundSchema);
+
+Campground.create({
+    name: "Granite Hill", 
+    image: "https://cdn.pixabay.com/photo/2016/01/19/16/48/teepee-1149402__340.jpg"
+}, function(err, campground){
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(campground);
+    }
+});
+
+
 
 app.get("/", function(req, res){
     res.render("landing");
